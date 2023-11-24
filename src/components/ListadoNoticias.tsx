@@ -1,4 +1,4 @@
-import { Typography, Grid } from '@mui/material';
+import { Typography, Grid, TablePagination } from '@mui/material';
 import useNoticias from '../hooks/useNoticias';
 import Noticia from './Noticia';
 
@@ -16,11 +16,26 @@ const ListadoNoticias = () => {
         Ultimas Noticias
       </Typography>
 
-      <Grid>
-        {noticias.map(noticia => (
-          <Noticia />
+      <Grid
+        container
+        spacing={2}
+      >
+        {noticias?.map(noticia => (
+          <Noticia
+            key={noticia.url}
+            noticia={noticia}
+          />
         ))}
       </Grid>
+
+      <TablePagination
+        component='div'
+        count={100}
+        page={1}
+        // onPageChange={handleChangePage}
+        // rowsPerPage={rowsPerPage}
+        // onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </>
   );
 };

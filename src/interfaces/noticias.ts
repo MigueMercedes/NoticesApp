@@ -8,13 +8,13 @@ export interface NoticiasI {
 
 export interface Article {
   source:      Source;
-  author:      null;
+  author:      null | string;
   title:       string;
-  description: null;
+  description: null | string;
   url:         string;
-  urlToImage:  null;
+  urlToImage:  null | string;
   publishedAt: string;
-  content:     null;
+  content:     null | string;
 }
 
 export interface Source {

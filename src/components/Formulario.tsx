@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import useNoticias from '../hooks/useNoticias';
 
 const CATEGORIAS = [
@@ -33,14 +33,6 @@ const Formulario = () => {
           ))}
         </Select>
 
-        <Box marginTop={2}>
-          <Button
-            fullWidth
-            variant='contained'
-          >
-            Buscar Noticias
-          </Button>
-        </Box>
       </FormControl>
     </form>
   );
