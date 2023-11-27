@@ -4,7 +4,6 @@ import { Card, CardActions, CardContent, CardMedia, Link, Typography, Grid } fro
 const Noticia = ({ noticia }: { noticia: Article }) => {
   const { urlToImage, url, title, description, source } = noticia;
 
-  console.log(noticia);
   return (
     <>
       {urlToImage?.startsWith('http') && (

@@ -1,9 +1,11 @@
-import { Typography, Grid, TablePagination } from '@mui/material';
+import { Grid, Pagination, Stack, Typography } from '@mui/material';
 import useNoticias from '../hooks/useNoticias';
 import Noticia from './Noticia';
 
 const ListadoNoticias = () => {
-  const { noticias } = useNoticias();
+  const { noticias, totalNoticias, handleChangePagina, pagina } = useNoticias();
+
+  const totalPaginas = Math.ceil((totalNoticias || 1) / 20);
 
   return (
     <>
@@ -20,22 +22,36 @@ const ListadoNoticias = () => {
         container
         spacing={2}
       >
-        {noticias?.map(noticia => (
+        {noticias?.map((noticia, index) => (
           <Noticia
-            key={noticia.url}
+            key={`${noticia.url}-${index}`}
             noticia={noticia}
           />
         ))}
       </Grid>
 
-      <TablePagination
+      <Stack
+        spacing={2}
+        mt={5}
+        direction={'row'}
+        justifyContent={'center'}
+      >
+        <Pagination
+          count={totalPaginas}
+          color='primary'
+          onChange={handleChangePagina}
+          page={pagina}
+        />
+      </Stack>
+
+      {/* <TablePagination
         component='div'
         count={100}
         page={1}
-        // onPageChange={handleChangePage}
-        // rowsPerPage={rowsPerPage}
-        // onRowsPerPageChange={handleChangeRowsPerPage}
-      />
+        onPageChange={handleChangePage}
+        rowsPerPage={rowsPerPage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      /> */}
     </>
   );
 };
